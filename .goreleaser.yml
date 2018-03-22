@@ -1,6 +1,6 @@
 # Build customization
 env_files:
-  github_token: ~/.ssh/id_rsa
+  github_token: ~/.ssh/token
 builds:
   - binary: hc
     goos:
