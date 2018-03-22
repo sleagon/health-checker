@@ -18,6 +18,8 @@ The default dir for config.json is ```/home/xxx/.hc/config.json```
 
 ## Config
 
+> Notice: default checker will check the status of response, make sure your service response 200.
+
 Here is a simple example:
 ```json
 {
