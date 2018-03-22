@@ -1,0 +1,10 @@
+vendor
+.vscode
+main
+tmp
+blackstone
+config.json
+debug
+dist
+tasks.json
+plans.json

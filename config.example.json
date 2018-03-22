@@ -1,0 +1,36 @@
+{
+  "name": "HealthChecker",
+  "url": "https://github.com/sleagon",
+  "mail": {
+    "username": "shanyy163@163.com",
+    "password": "*******",
+    "host": "smtp.163.com",
+    "port": 25
+  },
+  "plans": {
+    "bad": {
+      "url": "https://www.bgaidu.com",
+      "method": "HEAD",
+      "body": "{}",
+      "interval": 5,
+      "callback": "https://www.smartstudy.com",
+      "mail": "shanyuanyuan@innobuddy.com"
+    },
+    "good": {
+      "url": "https://www.baidu.com",
+      "method": "HEAD",
+      "body": "{}",
+      "interval": 5,
+      "callback": "https://www.smartstudy.com",
+      "mail": "shanyuanyuan@innobuddy.com"
+    },
+    "best": {
+      "url": "https://www.google.com",
+      "method": "HEAD",
+      "body": "{}",
+      "interval": 5,
+      "callback": "https://www.smartstudy.com",
+      "mail": "shanyuanyuan@innobuddy.com"
+    }
+  }
+}
