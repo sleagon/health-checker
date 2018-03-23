@@ -1,0 +1,21 @@
+{
+  "name": "HealthCheckerOk",
+  "url": "https://github.com/sleagon",
+  "mail": {
+    "username": "shanyuanyuan@innobuddy.com",
+    "password": "*******",
+    "host": "smtp.exmail.qq.com",
+    "port": "25"
+  },
+  "plans": {
+    "bad": {
+      "url": "https://www.bgaidu.com",
+      "method": "HEAD",
+      "body": "{}",
+      "interval": 5,
+      "retrycount": 987,
+      "callback": "https://www.smartstudy.com",
+      "mail": "shanyuanyuan@innobuddy.com"
+    }
+  }
+}
