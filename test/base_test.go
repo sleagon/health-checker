@@ -1,8 +1,8 @@
 package test
 
 import (
-	"testing"
 	"github.com/sleagon/health-checker/base"
+	"testing"
 )
 
 func TestLoadConfigOk(t *testing.T) {

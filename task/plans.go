@@ -9,7 +9,9 @@ import (
 )
 
 const cacheSize = 1024
+
 var _loaded bool
+
 type plan struct {
 	Name     string `json:"-"`
 	URL      string `json:"url"`
