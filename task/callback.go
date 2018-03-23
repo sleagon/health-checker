@@ -71,9 +71,3 @@ func monit() {
 		go v.Fire()
 	}
 }
-
-func init() {
-	lastMail = make(map[string]time.Time)
-	callbacks = make(chan callback, cacheSize)
-	go monit()
-}

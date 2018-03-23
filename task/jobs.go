@@ -112,7 +112,3 @@ func Consume() {
 		v.Consume()
 	}
 }
-
-func init() {
-	go Consume()
-}

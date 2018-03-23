@@ -9,7 +9,7 @@ import (
 )
 
 const cacheSize = 1024
-
+var _loaded bool
 type plan struct {
 	Name     string `json:"-"`
 	URL      string `json:"url"`
@@ -23,14 +23,25 @@ type plan struct {
 var plans map[string]*plan
 var gw sync.WaitGroup
 
-// Dispatch dispatch jobs based on plans
-func Dispatch() {
+func dispatch() {
 	for _, v := range plans {
 		gw.Add(1)
 		go v.Dispatch()
 	}
 	gw.Wait()
+}
 
+// NewAndRun all tasks
+func NewAndRun() {
+	New()
+	Run()
+}
+
+// Run run a instance
+func Run() {
+	go monit()
+	go Consume()
+	dispatch()
 }
 
 func (p *plan) Dispatch() {
@@ -38,13 +49,22 @@ func (p *plan) Dispatch() {
 		time.Sleep(time.Second * time.Duration(p.Interval))
 		jobs <- job{p.Name, p.URL, p.Method, p.Body, time.Now()}
 	}
-
 }
 
-func init() {
+// New init task package
+func New() {
+	if _loaded {
+		return
+	}
+	defer func() { _loaded = true }()
+	// load base package first
+	base.New()
+	// init basic var(s)
+	pf := base.GetConfig().Plans
 	plans = make(map[string]*plan)
 	jobs = make(chan job, cacheSize)
-	pf := base.GetConfig().Plans
+	lastMail = make(map[string]time.Time)
+	callbacks = make(chan callback, cacheSize)
 
 	// raw error map
 	var rem map[string]*json.RawMessage

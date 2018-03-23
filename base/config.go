@@ -9,6 +9,7 @@ import (
 	"path"
 )
 
+var _loaded bool
 var config Config
 
 // Mail config for mail(smtp)
@@ -49,7 +50,13 @@ func LoadConfig(pa string) {
 
 var pa = flag.String("config", "", "path of config.json")
 
-func init() {
+// New init base
+func New() {
+	// avoid loading repeatly
+	if _loaded {
+		return
+	}
+	defer func() { _loaded = true }()
 	flag.Parse()
 	LoadConfig(*pa)
 }

@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	task.Dispatch()
+	task.NewAndRun()
 }
