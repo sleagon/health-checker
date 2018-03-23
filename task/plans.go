@@ -53,6 +53,13 @@ func (p *plan) Dispatch() {
 	}
 }
 
+func report() {
+	for {
+		time.Sleep(time.Minute * 1)
+		log.Printf(">>>>>>>> jobs: %d, mails: %d \n", len(jobs), len(callbacks))
+	}
+}
+
 // New init task package
 func New() {
 	if _loaded {
@@ -83,4 +90,5 @@ func New() {
 		plans[k].Name = k
 	}
 	log.Printf(">>>>>>>> %d plans loaded successfully.\n", len(plans))
+	go report()
 }
